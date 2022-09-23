@@ -1,3 +1,109 @@
+/*
+  ========================================
+  General Styling
+  ========================================
+*/
+
 body {
-  font-family: sans-serif, arial;
+  text-align: center;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  /* border: 10px solid blue; */
+}
+
+#app {
+  margin: 20px;
+  /* border: 3px solid #000; */
+}
+
+h1 {
+  background-color: #f39461;
+  color: rgb(190, 0, 0);
+  /* margin: 20px; */
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+form {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  /* width: 100%; */
+  border: 30px #0c0d0c;
+  border-radius: 10px;
+  background-color: #ffc8ab;
+}
+
+.movie-list {
+  background-color: #ffc8ab;
+  color: #f00;
+  border: 10px solid #0c0d0c;
+  border-radius: 10px;
+}
+
+.movie-list-item {
+  height: 40px;
+  text-align: center;
+  font-size: x-large;
+  background-color: #f39461;
+  color: #a30000;
+  margin: 20px;
+  border: 10px solid #5a2400;
+  border-radius: 10px;
+}
+
+
+.watched-tab, .to-watch-tab, .add-bar, .search-bar, .add, .search {
+  height: 40px;
+  margin: 0 20px 20px 20px;
+  font-size: larger;
+}
+
+.watched {
+  height: 40px;
+  font-size: large;
+  float: right;
+  align-self: center;
+  background-color: #fee9de;
+}
+
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+#app {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 20% 10px 10px auto 20%;
+  grid-template-rows: 30px 10px 30px auto;
+  grid-template-areas:
+    ". movielisttitle movielisttitle movielisttitle ."
+    ". form form form ."
+    ". watched . towatch ."
+    ". movielistitems movielistitems movielistitems ."
+}
+
+form {
+  grid-area: form;
+}
+
+.movie-list-title {
+  grid-area: movielisttitle;
+}
+
+.movie-list {
+  grid-area: movielist;
+}
+
+.movie-list-item {
+  grid-area: movielistitems;
+}
+
+.watched-tab {
+  grid-area: watched;
+}
+
+.to-watch-tab {
+  grid-area: towatch;
 }
