@@ -7,7 +7,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon server/index.js",
-    "react-dev": "webpack --config ./webpack.config.js  -w"
+    "react-dev": "webpack --config ./webpack.config.js  -w",
+    "start:client": "npx live-server",
+    "start:es6": "npx babel-node ./server/app.js"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
