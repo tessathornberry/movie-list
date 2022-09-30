@@ -8,48 +8,17 @@ import MovieListAdd from './MovieListAdd.jsx'
 const {useState} = React;
 
 const App = () => {
-  const [movies, setMovies] = useState([
-    {title: 'Mean Girls'},
-    {title: 'Hackers'},
-    {title: 'The Grey'},
-    {title: 'Sunshine'},
-    {title: 'Ex Machina'},
-  ]);
+  const [movies, setMovies] = useState(['Princess Bride', 'Peter Pan', 'Ever After', 'Van Helsing', 'Serenity', 'The Prophecy']);
+  const [searchedMovies, setSearchedMovies] = useState(['Princess Bride', 'Peter Pan', 'Ever After', 'Van Helsing', 'Serenity', 'The Prophecy']);
+  // const [entry, setEntry] = useState('');
 
-  const [searchedMovies, setSearchedMovies] = useState([
-    {title: 'Mean Girls'},
-    {title: 'Hackers'},
-    {title: 'The Grey'},
-    {title: 'Sunshine'},
-    {title: 'Ex Machina'},
-  ]);
-
-  const [entry, setEntry] = useState('');
-
-  // function searchMovies(movieString) {
-  //   var newMoviesArray = [];
-  //   movieString = movieString.toLowerCase()
-  //   var isFound = false;
-  //   for (var i = 0; i < movies.length; i++) {
-  //     var lowerCaseMovie = (movies[i].title.toLowerCase());
-  //     if (lowerCaseMovie.includes(movieString)) {
-  //       isFound = true;
-  //       newMoviesArray.push(movies[i]);
-  //       setMovies(newMoviesArray);
-  //     }
-  //   }
-  //   if (!isFound){
-  //     alert('Sorry, that movie not found');
-  //   }
-  // }
-
+  /** This function allows the user to search the movies **/
   function searchMovies(movieString) {
     setMovies(searchedMovies);
     var newMoviesArray = [];
     console.log('searchedMovies');
     movieString = movieString.toLowerCase()
     var isFound = false;
-
     for (var i = 0; i < searchedMovies.length; i++) {
       var lowerCaseMovie = (searchedMovies[i].title.toLowerCase());
       if (lowerCaseMovie.includes(movieString)) {
@@ -59,29 +28,36 @@ const App = () => {
       }
     }
     if (!isFound){
-      alert('Sorry, that movie not found');
+      alert('Sorry, that movie is not found on the list');
     }
   }
 
+ /** This function allows the user to add movies but will allow non-case-related variations of the same movie**/
   function addMovie(movieString) {
-    console.log('movies');
+    setMovies(searchedMovies);
     var lowerCaseString = movieString.toLowerCase()
     var isRepeat = false;
 
-    for (var i = 0; i < movies.length; i++) {
-      var lowerCaseMovie = (movies[i].title.toLowerCase());
-      if (lowerCaseMovie.includes(lowerCaseString)) {
+    for (var i = 0; i < searchedMovies.length; i++) {
+      var lowerCaseMovie = (searchedMovies[i].title.toLowerCase());
+      if (lowerCaseMovie === lowerCaseString) {
         isRepeat = true;
       }
     }
 
     if (!isRepeat) {
+      setMovies(searchedMovies);
       movieString = {title: movieString};
       setSearchedMovies([...searchedMovies, movieString]);
       setMovies([...movies, movieString]);
+    } else {
+      alert('That movie might already be on the list!');
     }
   };
+  /**this function allows the watched status of a mogie to be undated */
 
+
+  /** this is the html that gets appended to the DOM **/
   return (
       <div className="movie-list-title"><h1>MovieList</h1>
         <MovieListSearch searchMovies={searchMovies}/>

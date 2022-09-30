@@ -4,10 +4,13 @@ import MovieList from './MovieList.jsx'
 
 const MovieListItem = ({movie}) => {
   // console.log('props in MovieListItem', movie);
+  const [watchActive, setWatchActive] = useState(false);
+  // const [watchActive, setWatchActive] = useState(false);
 
   return (
    <div className="movie-list-item">
-     {movie}<button className="watched" type="button">Watched</button>
+     {movie}
+     <button className="watched" type="button">Watched</button>
    </div>
   )
 };
