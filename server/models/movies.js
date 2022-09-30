@@ -2,18 +2,19 @@ var db = require('../db');
 
 module.exports = {
   getAll: function (callback) {
-    var queryStr = "SELECT * FROM movies order by movies.moviename ASC"; //might not work?
+    var queryStr = "SELECT * FROM movielist order by movies.moviename ASC"; //might not work?
     db.query(queryStr, function(err, results) {
       if (err) {
         console.log('Could not retrieve movies');
       } else {
+        console.log('hooray, movies!');
         callback(results);
       }
     });
   }, // a function which produces all the movies
 
   create: function (params, callback) {
-    var queryStr = "INSERT INTO movies (moviename) VALUES ('%')";
+    var queryStr = "INSERT INTO movielist (moviename) VALUES ('%')";
     db.query(queryStr, params, function(err, result) {
       if (err) {
         throw err;

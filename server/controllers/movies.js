@@ -2,7 +2,7 @@ var models = require('../models');
 
 module.exports = {
   get: function(request, response) {
-    models.movies.getAll(function(err, results) { //this is Node and/or express, I think
+    models.movies.getAll(function(err, results) { //this is Node , I think
       if (err) {
         console.log('error in controllers movies', err);
       } else {
@@ -24,5 +24,5 @@ module.exports = {
       }
 
     });
-  } // a function which handles posting a message to the database
+  } // a function which handles posting a moviename to the database
 };
